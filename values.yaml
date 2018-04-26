@@ -25,6 +25,9 @@
 # AWS default region
 #awsRegion:
 
+# HTTPs proxy for aws calls
+#awsHttpsProxy
+
 # How often to sync ECR login token. Default to 2 hours
 #ecrResyncPeriod:
 

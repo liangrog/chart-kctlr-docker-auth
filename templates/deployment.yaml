@@ -34,6 +34,10 @@ spec:
               value:  {{ .Values.awsSecret }}
             - name: AWS_DEFAULT_REGION
               value:  {{ .Values.awsRegion }}
+            {{ if .Values.awsHttpsProxy }}
+            - name: AWS_HTTPS_PROXY
+              value: {{ .Values.awsHttpsProxy }}
+            {{ end }}
             - name: ECR_RESYNC_PERIOD
               value: {{ .Values.ecrResyncPeriod }}
             - name: ECR_SECRET_NAME

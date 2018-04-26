@@ -7,14 +7,17 @@ metadata:
     {{- include "commonMeta" . | indent 4}}
     component: {{ template "fullname" . }}
     role: cluster-role
+  annotations:
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook": "pre-install"
 rules:
-  - apiGroups: [""]
+  - apiGroups: ["*"]
     resources: ["events"]
     verbs: ["get", "list", "watch", "create", "update", "patch"]
-  - apiGroups: [""]
+  - apiGroups: ["*"]
     resources: ["namespaces"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
+  - apiGroups: ["*"]
     resources: ["secrets"]
     verbs: ["get", "list", "watch", "create", "update"]
 
