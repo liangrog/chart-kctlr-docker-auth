@@ -1,18 +1,17 @@
-Kubernetes controller for creating secret of private docker repo
+ECR Image Pull Secret Controller
 ===
-This Helm chart creates a custom controller deployment in kuberenetes for creating docker config secret.
+This Helm chart creates a custom controller in Kubernetes cluster that will 
 
-What it does
----
 - Oberving all namespaces lifecycle unless excluded
-- Create/update/delete docker config secret in all namespaces (if not specify exclusion)
+- Create/update/delete ECR docker config secret in all namespaces accordingly
+- Periodically refresh all ECR secrets before expiration
  
 Values 
 ---
 
-|         Name        |    requirement    |        Default       |                 Description             |
+|         Name        |    Requirement    |        Default       |                 Description             |
 |:-------------------:|:-----------------:|:--------------------:|:---------------------------------------:|
-| kubeConfigType | optional | in | "in": controller will pick it up within the cluster <br /> "out": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
+| kubeConfigType | optional | in | "**in**": controller will pick it up within the cluster <br /> "**out**": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
 | kubeConfigPath | conditonal |   | Kubernetes config file path when setting "kubeConfigType" to "out" |
 | workerNumber | optional | 2 | Number of workers to spawn
 | exclude | optional |   | Namespaces not to observe. Comma delimited string. e.g. "ns1,ns2" |
@@ -37,3 +36,22 @@ Delete
 ---
 
     $ helm delete <release-name>
+
+
+How to use
+---
+Simply add the secret name in your deployment/daemonset/pod spec, e.g.
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    name: private-reg
+    spec:
+      imagePullSecrets:
+      - name: ecr
+      ...
+      containers:
+      - name: private-reg-container
+        image: <your-private-image>
+      ...
+
