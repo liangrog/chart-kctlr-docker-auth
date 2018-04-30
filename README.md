@@ -9,11 +9,10 @@ What it does
  
 Values 
 ---
-**If default value is empty then it's mandatory**
 
 |         Name        |    requirement    |        Default       |                 Description             |
 |:-------------------:|:-----------------:|:--------------------:|:---------------------------------------:|
-| kubeConfigType | optional | in | "in": controller will pick it up within the cluster. "out": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
+| kubeConfigType | optional | in | "in": controller will pick it up within the cluster <br /> "out": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
 | kubeConfigPath | conditonal |   | Kubernetes config file path when setting "kubeConfigType" to "out" |
 | workerNumber | optional | 2 | Number of workers to spawn
 | exclude | optional |   | Namespaces not to observe. Comma delimited string. e.g. "ns1,ns2" |
