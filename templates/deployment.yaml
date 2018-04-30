@@ -12,14 +12,13 @@ spec:
     type: {{ .Values.strategyType }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      component: {{ template "fullname" . }}
       role: controller
   template:
     metadata:
       labels:
         {{- include "commonMeta" . | indent 8 }}
         component: {{ template "fullname" . }}
-        app: {{ .Chart.Name }}
         role: controller
     spec:
       serviceAccount: {{ .Chart.Name }}
@@ -31,13 +30,13 @@ spec:
             - name: AWS_ACCESS_KEY_ID
               value: {{ .Values.awsKey }}
             - name: AWS_SECRET_ACCESS_KEY
-              value:  {{ .Values.awsSecret }}
+              value: {{ .Values.awsSecret }}
             - name: AWS_DEFAULT_REGION
-              value:  {{ .Values.awsRegion }}
-            {{ if .Values.awsHttpsProxy }}
+              value: {{ .Values.awsRegion }}
+            {{- if .Values.awsHttpsProxy }}
             - name: AWS_HTTPS_PROXY
               value: {{ .Values.awsHttpsProxy }}
-            {{ end }}
+            {{- end }}
             - name: ECR_RESYNC_PERIOD
               value: {{ .Values.ecrResyncPeriod }}
             - name: ECR_SECRET_NAME
