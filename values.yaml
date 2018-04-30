@@ -6,7 +6,7 @@
 #kubeConfigType:
 
 # Kubernetes config file path when setting "kubeConfigType" to "out"
-#kubeConfigPath:
+#kubeConfigFilePath:
 
 # Number of workers to spawn. Default to 2
 #workerNumber:

@@ -46,7 +46,7 @@ spec:
             - name: KUBE_CONFIG_PATH
               {{- if .Values.kubeConfigFilePath }}
               value: "/kube/config"
-              {{- else }
+              {{- else }}
               value: 
               {{- end }}
             - name: WORKER_NUMBER
