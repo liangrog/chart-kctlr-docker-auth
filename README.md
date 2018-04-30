@@ -5,11 +5,24 @@ This Helm chart creates a custom controller deployment in kuberenetes for creati
 What it does
 ---
 - Oberving all namespaces lifecycle unless excluded
-- Create/update/delete docker config secret in all namespaces
+- Create/update/delete docker config secret in all namespaces (if not specify exclusion)
  
 Values 
 ---
-Please refer to `values.yaml` for value overrides. 
+**If default value is empty then it's mandatory**
+
+|         Name        |    requirement    |        Default       |                 Description             |
+|:-------------------:|:-----------------:|:--------------------:|:---------------------------------------:|
+| kubeConfigType | optional | in | "in": controller will pick it up within the cluster. "out": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
+| kubeConfigPath | conditonal |   | Kubernetes config file path when setting "kubeConfigType" to "out" |
+| workerNumber | optional | 2 | Number of workers to spawn
+| exclude | optional |   | Namespaces not to observe. Comma delimited string. e.g. "ns1,ns2" |
+| awsKey | mandatory |    | AWS access key id |
+| awsSecret | mandatory |    | AWS secret access key |
+| awsRegion | mandatory |    | AWS region |
+| awsHttpsProxy | optional |    | Https proxy address if using proxy to make AWS calls |
+| ecrResyncPeriod | optional |  2  | How often to globally sync ECR login token in hours |
+| ecrSecretName | optional | ecr | Name of the ECR secret get created |
 
 Installation
 ---
