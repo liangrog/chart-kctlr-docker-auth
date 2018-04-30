@@ -44,8 +44,22 @@ spec:
             - name: KUBE_CONFIG_TYPE
               value: {{ default "in" .Values.kubeConfigType }}
             - name: KUBE_CONFIG_PATH
-              value: {{ .Values.kubeConfigPath }}
+              {{- if .Values.kubeConfigFilePath }}
+              value: "/kube/config"
+              {{- else }
+              value: 
+              {{- end }}
             - name: WORKER_NUMBER
               value: {{ .Values.workerNumber }}
             - name: EXCLUDE_NAMESPACES
               value: {{ .Values.exclude | quote }}
+      {{- if .Values.kubeConfigFilePath }}
+          volumeMounts:
+            - mountPath: /kube/config
+              name: kube-config
+      volumes:
+      - name: kube-config
+        hostPath:
+          path: {{ .Values.kubeConfigFilePath }}
+          type: File
+      {{- end }}

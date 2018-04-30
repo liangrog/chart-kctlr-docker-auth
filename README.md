@@ -10,9 +10,9 @@ Values
 ---
 
 |         Name        |    Requirement    |        Default       |                 Description             |
-|:-------------------:|:-----------------:|:--------------------:|:---------------------------------------:|
-| kubeConfigType | optional | in | "**in**": controller will pick it up within the cluster <br /> "**out**": controller will pick it up from a given path. If set this type, you must set "kubeConfigPath" |
-| kubeConfigPath | conditonal |   | Kubernetes config file path when setting "kubeConfigType" to "out" |
+|:--------------------|:-----------------:|:--------------------:|:----------------------------------------|
+| kubeConfigType | optional | in | "**in**": controller will pick it up within the cluster <br /> "**out**": controller will pick it up from a given path. If set this type, you must set "kubeConfigFilePath" |
+| kubeConfigFilePath | conditonal |   | Kubernetes config file path on host when setting "kubeConfigType" to "out" |
 | workerNumber | optional | 2 | Number of workers to spawn
 | exclude | optional |   | Namespaces not to observe. Comma delimited string. e.g. "ns1,ns2" |
 | awsKey | mandatory |    | AWS access key id |
