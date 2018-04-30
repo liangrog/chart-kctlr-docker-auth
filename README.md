@@ -1,6 +1,6 @@
 ECR Image Pull Secret Controller
 ===
-This Helm chart creates a custom controller in Kubernetes cluster that will 
+This [Helm chart](https://github.com/kubernetes/helm) creates a custom controller in Kubernetes cluster that will 
 
 - Oberving all namespaces lifecycle unless excluded
 - Create/update/delete ECR docker config secret in all namespaces accordingly
