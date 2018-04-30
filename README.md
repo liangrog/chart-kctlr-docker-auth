@@ -5,6 +5,11 @@ This [Helm chart](https://github.com/kubernetes/helm) creates a custom controlle
 - Oberving all namespaces lifecycle unless excluded
 - Create/update/delete ECR docker config secret in all namespaces accordingly
 - Periodically refresh all ECR secrets before expiration
+
+Supported Kubernetes version
+---
+- 1.9.3
+
  
 Values 
 ---
