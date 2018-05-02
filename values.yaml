@@ -17,16 +17,13 @@
 ## Configuration for AWS ECR
 
 # AWS secret key id
-#awsKey:
+awsKey:
 
 # AWS key secret
-#awsSecret:
+awsSecret:
 
 # AWS default region
-#awsRegion:
-
-# HTTPs proxy for aws calls
-#awsHttpsProxy
+awsRegion:
 
 # How often to sync ECR login token. Default to 2 hours
 #ecrResyncPeriod:
@@ -34,8 +31,11 @@
 # Name of the secret. Default to "ecr"
 #ecrSecretName:
 
+#awsHttpsProxy:
+
 ## Controller deplpoyment
 repository: liangrog/kctlr-docker-auth
 tag: 1.9.3
+imagePullPolicy: Always
 replicas: 1
 strategyType: Recreate

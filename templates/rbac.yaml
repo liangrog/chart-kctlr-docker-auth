@@ -7,9 +7,9 @@ metadata:
     {{- include "commonMeta" . | indent 4}}
     component: {{ template "fullname" . }}
     role: cluster-role
-  annotations:
-    "helm.sh/hook-delete-policy": "before-hook-creation"
-    "helm.sh/hook": "pre-install"
+#  annotations:
+#    "helm.sh/hook-delete-policy": "before-hook-creation"
+#    "helm.sh/hook": "pre-install"
 rules:
   - apiGroups: ["*"]
     resources: ["events"]
